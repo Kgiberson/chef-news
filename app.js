@@ -1,4 +1,4 @@
-var app = angular.module('flapperNews', []);
+var app = angular.module('chefNews', []);
 
 app.controller('MainCtrl', [
 '$scope',
@@ -21,7 +21,7 @@ app.controller('MainCtrl', [
       $scope.title = '';
       $scope.link = '';
     };
-    @scope.incrementUpvotes = function(post) {
+    $scope.incrementUpvotes = function(post) {
       post.upvotes += 1;
     }
 }]);
