@@ -1,15 +1,16 @@
 var app = angular.module('chefNews', []);
 
+app.factory('posts', [function(){
+  var o = {
+    posts: []
+  };
+  return o;
+}]);
+
 app.controller('MainCtrl', [
-'$scope',
-  function($scope){
-    $scope.posts = [
-      {title: 'post 1', upvotes: 5},
-      {title: 'post 2', upvotes: 2},
-      {title: 'post 3', upvotes: 15},
-      {title: 'post 4', upvotes: 9},
-      {title: 'post 5', upvotes: 4}
-    ];
+'$scope', 'posts',
+  function($scope, posts){
+    $scope.posts = posts.posts;
     // When we add a post we get the title from $scope.title, which is then cleared after the post has been created.
     $scope.addPost = function(){
       if (!$scope.title || $scope.title === '') { return; }
