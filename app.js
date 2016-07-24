@@ -1,4 +1,5 @@
 var app = angular.module('chefNews', []);
+var router = angular.module('chefNews', ['ui.router']);
 
 app.factory('posts', [function(){
   var o = {
@@ -26,3 +27,18 @@ app.controller('MainCtrl', [
       post.upvotes += 1;
     }
 }]);
+
+app.config([
+  '$stateProvider',
+  '$urlRouterProvider',
+  function($stateProvider, $urlRouterProvider) {
+
+    $stateProvider
+      .state('home', {
+        url: '/home',
+        templateUrl: '/home.html',
+        controlelr: 'MainCtrl'
+      });
+
+    $urlRouterProvider.otherwise('home');
+  }]);
